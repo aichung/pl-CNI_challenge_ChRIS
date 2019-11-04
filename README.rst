@@ -18,12 +18,11 @@ Abstract
 
 This app has been created as part of the MICCAI CNI 2019 Transfer-Learning Challenge (http://www.brainconnectivity.net/challenge.html) to classify networks between ADHD and Control connectomes.
 
-The purpose of this repo is for you to be able to containerise your solution into a Docker image and run it the hidden test data and see how your method performs via the ChRIS open-source neuroimaging platform.
+The purpose of this repo is for you to be able to containerise your solution into a Docker image and run it on the hidden test data to see how your method performs. This has been made this possible via the ChRIS open-source neuroimaging platform.
 
 Using Docker images allows you to parcel your solution in your choice of open-source language and version. And it enables others to easily run your solution without having to install multiple programs required for execution.
 
-The ``cni_challenge_chris.py`` app is a wrapper for you to add your code/package which is then containerised by Docker.
-While this is coded in Python and currently contains a bare bones example also in Python, other languages are possible.
+The ``cni_challenge_chris.py`` app in this this repo is a wrapper for you to add your code/package which is then containerised by Docker. While this is coded in Python and currently contains a bare bones example to include your Python, adding your code in other languages are possible.
 
 For further information on the Challenge and where to download the training and validation datasets, see http://www.brainconnectivity.net/challenge.html
 
@@ -181,9 +180,14 @@ These requirements are to help us systematically execute and assess Challenge so
 
 So please remove the mandatory arguments/assignments that were included as examples in the barebones repo to help you (``--rot`` and ``--run_option``)
 
-* Input and output directories are named ``inputdir`` and ``outputdir``, respectively. Your code should expect to read in data from ``inputdir`` as is structured in the ``pl-cni_challenge`` repo as this is how our test data will be structured.
-* Output should be _two_ text files in ``outputdir`` called ``classification.txt`` and ``scores.txt``. ``classification.txt`` should contain the classification label for each subject with one subject per row (a single column of values). Labels should be 0 = Control, and 1 = Patient. ``scores.txt`` should contain the prediction probability/score for each subject, also with one subject per row.
-* Do not include the Challenge training or validation data in your Docker image.
+* Input and output directories are named ``inputdir`` and ``outputdir``, respectively. Your code should read in data from ``inputdir`` as is structured in the training and validation data releases for the CNI 2019 challenge (http://www.brainconnectivity.net/challenge_data.html) as the test data will be of the same form.
+
+
+
+* Your code should output _two_ text files in ``outputdir`` called ``classification.txt`` and ``scores.txt``.       
+    ``classification.txt`` should contain the subject ID, and the corresponding subject's classification label, with one subject per row (i.e. two columns, the first containing values of type string, the second type int). Labels should be 0 = Control, and 1 = Patient. 
+    ``scores.txt`` should contain the subject ID, and the corresponding subject's prediction probability/score, with one subject per row (i.e. two columns, the first containing values of type string, the second of floats). 
+* Do not include the Challenge training or validation data in your Docker image. 
 * The code to evaluate the performance of your submission is pl-cni_challenge/cni_challenge/evaluation/classification_metrics.py, which will be executed as: 
 
 .. code:: bash
@@ -191,11 +195,5 @@ So please remove the mandatory arguments/assignments that were included as examp
     classification_metrics.py -p classification.txt -g ${goundtruth_file} -o ${output_file}
 
 For information on our performance evaluation criterias, see: http://miccai.brainconnectivity.net/challenge_eval.html
-
-Rules
-~~~~~~
-* To be considered for a prize, at least one author of a Challenge submission must register for the CNI Challenge at MICCAI 2019.
-
-
 
 
