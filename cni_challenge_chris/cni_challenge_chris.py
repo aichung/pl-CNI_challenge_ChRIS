@@ -8,8 +8,19 @@
 #              http://childrenshospital.org/FNNDSC/
 #                        dev@babyMRI.org
 #
+# ===============================================================================
+# Metadata
+# ===============================================================================
+__author__ = 'AWC'
+__contact__ = 'aiwern.chung@childrens.harvard.edu'
+__copyright__ = ''
+__license__ = ''
+__date__ = '11/2019'
+__version__ = '0.1'
 
-
+# ===============================================================================
+# Import statements
+# ===============================================================================
 import os
 import sys
 sys.path.append(os.path.dirname(__file__))
@@ -20,8 +31,14 @@ from chrisapp.base import ChrisApp
 
 Gstr_title = """
 
-Generate a title from 
-http://patorjk.com/software/taag/#p=display&f=Doom&t=cni_challenge_chris
+            _  _____  _____  __   _____      _           _ _                       
+           (_)/ __  \|  _  |/  | |  _  |    | |         | | |                      
+  ___ _ __  _ `' / /'| |/' |`| | | |_| | ___| |__   __ _| | | ___ _ __   __ _  ___ 
+ / __| '_ \| |  / /  |  /| | | | \____ |/ __| '_ \ / _` | | |/ _ \ '_ \ / _` |/ _ \\
+| (__| | | | |./ /___\ |_/ /_| |_.___/ / (__| | | | (_| | | |  __/ | | | (_| |  __/
+ \___|_| |_|_|\_____/ \___/ \___/\____/ \___|_| |_|\__,_|_|_|\___|_| |_|\__, |\___|
+                                    ______                               __/ |     
+                                   |______|                             |___/      
 
 """
 
@@ -52,17 +69,35 @@ where necessary.)
 
     BRIEF EXAMPLE
 
-        * Bare bones execution
+        * Bare bones execution of a python example to read in a vector file, perform a matrix rotation, and output the
+          new vectors in a text file.
 
-            mkdir in out && chmod 777 out
-            python cni_challenge_chris.py   \\
-                                in    out
+            mkdir inputdir outputdir && chmod 777 outputdir
+            python cni_challenge_chris.py inputdir outputdir
+
+            N.B. Required files (rotation_matrices.txt and vectors.txt) should be in 'inputdir' as provided in pl-CNI_challenge_ChRIS 
+            github repository.
+
+            Output will be in outputdir/classification.txt
 
     DESCRIPTION
 
-        `cni_challenge_chris.py` ...
+        `cni_challenge_chris.py` has been created in conjunction with the MICCAI CNI 2019 Challenge
+        http://www.brainconnectivity.net.
+        
+        This repo allows users to 
+            1) convert their Challenge solution into a containerised Docker image;
+            2) run their image on the Challenge hidden test data, on the ChRIS neuroimaging platform.
+        
+        `cni_challenge_chris.py` contains currently contains a running python example.
 
     ARGS
+
+        <inputDir> 
+        Mandatory. A directory which contains all necessary input files.
+        
+        <outputDir>
+        Mandatory. A directory where output will be saved to. Must be universally writable to.
 
         [-h] [--help]
         If specified, show help message and exit.
@@ -90,7 +125,8 @@ where necessary.)
 
 class CNI_challenge_chris(ChrisApp):
     """
-    An app to ....
+    A bare bones app created for MICCAI CNI 2019 Challenge.
+    Challengers can use this app to create a Docker container of their solution to run on hidden test data.
     """
     AUTHORS                 = 'Ai Wern Chung (aiwern.chung@childrens.harvard.edu)'
     SELFPATH                = os.path.dirname(os.path.abspath(__file__))
@@ -99,7 +135,8 @@ class CNI_challenge_chris(ChrisApp):
     TITLE                   = 'ChRIS plugin to create a Docker image to run on the CNI Challenge Test dataset on ChRIS'
     CATEGORY                = ''
     TYPE                    = 'ds'
-    DESCRIPTION             = 'An app to ...'
+    DESCRIPTION             = 'An app to create a Docker container of a solution to run on the CNI 2019 Challenge hidden test data.\n' \
+                              'For help see: http://www.brainconnectivity.net/challenge_subm.html'
     DOCUMENTATION           = 'http://wiki'
     VERSION                 = '0.1'
     ICON                    = '' # url of an icon image
