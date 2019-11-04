@@ -164,8 +164,10 @@ Our barebones Docker image can be retrieved (from DockerHub 'aiwc') and executed
                  /incoming /outgoing
 
 
-App and Challenge Requirements, Rules
--------------------------------------
+App and Challenge Requirements
+------------------------------
+
+* The input and outputs detailed below are necessary to create a ChRIS-compatible plugin to specifically evaluate your solution on the Challenge hidden test data.
 
 * Python packages that are required should be listed in ``requirements.txt`` which will be pip installed and included in the Docker container.
 * For implementations in C or C++, the executable pl-cni_challenge wrapper will create the executable before being passed into DockerHub. This means that make instructions (``makefile``) should be included in ``Dockerfile``.
@@ -181,7 +183,6 @@ These requirements are to help us systematically execute and assess Challenge so
 So please remove the mandatory arguments/assignments that were included as examples in the barebones repo to help you (``--rot`` and ``--run_option``)
 
 * Input and output directories are named ``inputdir`` and ``outputdir``, respectively. Your code should read in data from ``inputdir`` as is structured in the training and validation data releases for the CNI 2019 challenge (http://www.brainconnectivity.net/challenge_data.html) as the test data will be of the same form.
-
 
 
 * Your code should output _two_ text files in ``outputdir`` called ``classification.txt`` and ``scores.txt``.       
