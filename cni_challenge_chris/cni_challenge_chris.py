@@ -27,7 +27,8 @@ sys.path.append(os.path.dirname(__file__))
 
 # import the Chris app superclass
 from chrisapp.base import ChrisApp
-
+# Import a python function that performs a matrix rotation
+from example_python.rotate import rotate_matrix
 
 Gstr_title = """
 
@@ -167,6 +168,12 @@ class CNI_challenge_chris(ChrisApp):
         """
         Define the CLI arguments accepted by this plugin app.
         Use self.add_argument to specify a new app argument.
+
+        e.g.
+        To pass in a string:
+
+        self.add_argument('--rot', dest='rot', type=str, optional=False,
+                          help='Type string: Name of file containing rotation matrix')
         """
 
     def run(self, options):
@@ -175,6 +182,31 @@ class CNI_challenge_chris(ChrisApp):
         """
         print(Gstr_title)
         print('Version: %s' % self.get_version())
+
+        # ===============================================
+        # Initialising variables
+        # ===============================================
+        input_data_name = 'vectors.txt'                                     # Text file of vectors
+        input_rotation_mat_names = 'rotation_matrices.txt'                  # Text file of rotation matrices to apply on vectors
+        output_classification_name = 'classification.csv'                   # Output text file of rotated vectors
+        output_score_name = 'score.csv'                                     # Dummy output file
+
+        # Input and output files must be in 'inputdir' and 'outputdir', respectively.
+        str_rotation_matrix = '%s/%s' % (options.inputdir, input_rotation_mat_names)     # File containing rotation matrices
+        str_vectors = '%s/%s' % (options.inputdir, input_data_name)
+        out_str= '%s/%s' % (options.outputdir, output_classification_name)
+
+        # ===============================================
+        # Call code
+        # ===============================================
+
+        # Call python module
+        print("\n")
+        print("\tCalling python code to perform vector rotations...")
+        rotate_matrix(str_rotation_matrix, str_vectors, out_str)
+        print ("\tOutput will be in %s" % out_str)
+        print("====================================================================================")
+
 
     def show_man_page(self):
         """
