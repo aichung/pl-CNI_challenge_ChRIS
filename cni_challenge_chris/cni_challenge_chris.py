@@ -76,10 +76,10 @@ where necessary.)
             mkdir inputdir outputdir && chmod 777 outputdir
             python cni_challenge_chris.py inputdir outputdir
 
-            N.B. Required files (rotation_matrices.txt and vectors.txt) should be in 'inputdir' as provided in pl-CNI_challenge_ChRIS 
-            github repository.
+            N.B. Required files (rotation_matrices.txt and vectors.txt) should be in 'inputdir' as provided in 
+            pl-CNI_challenge_ChRIS github repository.
 
-            Output will be in outputdir/classification.txt
+            Output will be in outputdir/classification.csv
 
     DESCRIPTION
 
