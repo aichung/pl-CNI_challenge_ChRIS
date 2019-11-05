@@ -125,7 +125,7 @@ to get inline help. And the following to run the bare-bones example:
 
 .. code:: bash
 
-    cni_challenge_chris.py --run_option python --rot rotation_matrices.txt /destination/to/inputdir /destination/to/outputdir
+    cni_challenge_chris.py /destination/to/inputdir /destination/to/outputdir
 
 
 Using ``docker run``
