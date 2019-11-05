@@ -1,4 +1,4 @@
-pl-cni_challenge_ChRIS
+pl-cni_challenge_chris
 ================================
 
 .. image:: https://badge.fury.io/py/cni_challenge.svg
@@ -77,7 +77,7 @@ Otherwise, visit https://docs.docker.com/install/ for installation directions
    Click ``Create && Build``  button to finish the setup and trigger the automated build.
    For more information on Automated Builds, see https://docs.docker.com/docker-hub/builds/. 
 
-   After the build has completed, the ``cni_challenge`` bare bones example is now available as a Docker image to be pulled from your DockerHub. The link to it will be ${your_Docker_account name}/${cni_challenge_DockerRepo}.
+   After the build has completed, the ``cni_challenge_chris`` bare bones example is now available as a Docker image to be pulled from your DockerHub. The link to it will be ${your_Docker_account name}/${cni_challenge_DockerRepo}.
 
 Arguments
 ---------
