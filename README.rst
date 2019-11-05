@@ -187,7 +187,7 @@ So please remove the mandatory arguments/assignments that were included as examp
 
 .. code:: bash
 
-    classification_metrics.py -p classification.txt -g ${goundtruth_file} -o ${output_file}
+    classification_metrics.py -p classification.csv score.csv -g ${goundtruth_file} -o ${output_file}
 
 For information on our performance evaluation criterias, see: http://miccai.brainconnectivity.net/challenge_eval.html
 
