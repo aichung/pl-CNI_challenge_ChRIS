@@ -89,12 +89,6 @@ Arguments
         
     <outputDir>
     Mandatory. A directory where output will be saved. Must be universally writable to.
-        
-    [--run_option < python || C >
-    Mandatory for bare bones example. C example still to come!
-        
-    [--rot <matrix_file.txt>]
-    Mandatory for bare bones example. String of file containing rotation matrices.
 
     [-v <level>] [--verbosity <level>]
     Verbosity level for app. Not used currently.
@@ -149,9 +143,9 @@ Now, prefix all calls with
 
 .. code:: bash
 
-    sudo docker run --rm -v $(pwd)/inputdir:/incoming -v $(pwd)/outputdir:/outgoing ${your_Docker_account name}/${cni_challenge_DockerRepo} cni_challenge.py  --run_option python --rot rotation_matrices.txt /incoming /outgoing
+    sudo docker run --rm -v $(pwd)/inputdir:/incoming -v $(pwd)/outputdir:/outgoing ${your_Docker_account name}/${cni_challenge_DockerRepo} cni_challenge_chris.py  --run_option python --rot rotation_matrices.txt /incoming /outgoing
 
-The output file of rotated vectors,  ``classifications.txt``, will be in  ``outputdir``.
+The output file of rotated vectors,  ``classifications.csv``, will be in  ``outputdir``.
 
 Our barebones Docker image can be retrieved (from DockerHub 'aiwc') and executed (calling 'man') on your machine as follows (with directories 'inputdir' and 'outputdir' as specified above):
 
@@ -167,12 +161,12 @@ Our barebones Docker image can be retrieved (from DockerHub 'aiwc') and executed
 App and Challenge Requirements
 ------------------------------
 
-* The input and outputs detailed below are necessary to create a ChRIS-compatible plugin to specifically evaluate your solution on the Challenge hidden test data.
+The input and outputs detailed below are necessary to create a ChRIS-compatible plugin to specifically evaluate your solution on the Challenge hidden test data.
 
 * Python packages that are required should be listed in ``requirements.txt`` which will be pip installed and included in the Docker container.
 * For implementations in C or C++, the executable pl-cni_challenge wrapper will create the executable before being passed into DockerHub. This means that make instructions (``makefile``) should be included in ``Dockerfile``.
 
-These requirements are to help us systematically execute and assess Challenge solutions:
+The following requirements are to enable execution of your solution with outputs that our evaluation module can read-in to assess your performance.
 
 * We expect to be able to run your Docker image on the test data with the following command:
 
