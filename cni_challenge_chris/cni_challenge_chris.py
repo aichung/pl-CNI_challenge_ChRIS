@@ -217,5 +217,5 @@ class CNI_challenge_chris(ChrisApp):
 
 # ENTRYPOINT
 if __name__ == "__main__":
-    chris_app = CNI_challenge_chris()
+    chris_app = cni_challenge_chris()
     chris_app.launch()
